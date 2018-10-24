@@ -24,6 +24,14 @@ LUBM
 
 BSBM
 
+https://github.com/graphMark/gmark
+
+http://konect.uni-koblenz.de/networks/amazon-ratings
+
+stream
+
+https://firehose.sandia.gov/
+
 ---
 
 ### Query Generator
@@ -47,4 +55,14 @@ based on digging to ensure that only queries with answers are generated
 
 
 ---
+
+### open academic
+
+https://www.openacademic.ai/oag/
+
+---
+
+### GTgraph
+
+http://www.cse.psu.edu/~kxm85/software/GTgraph/
 
