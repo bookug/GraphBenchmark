@@ -16,8 +16,9 @@
 class Match
 {
 public:
-	Match(int queryNodeNum, int queryEdgeNum, Graph* _data);
-	void match(int order);
+    static int query_count;
+	Match(int queryNodeNum, int queryEdgeNum, int queryNum, Graph* _data);
+	void match(IO& io);
 	~Match();
 
 private:
@@ -25,7 +26,7 @@ private:
 	Graph* query;
 	Graph* data;
 	int edgeNum;
-	
+    int queryNum;    //generate how many queries in this file
 };
 
 #endif

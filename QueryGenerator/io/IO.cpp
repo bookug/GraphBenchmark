@@ -98,12 +98,13 @@ IO::input(Graph*& data_graph)
 	this->data_id++;
 	return true;
 }
-//TODO: read file 
+
 bool 
-IO::input(vector<int>& query_list, vector<int>& edge_list)
+IO::input(vector<int>& node_list, vector<int>& edge_list, vector<int>& query_list)
 {
 	int queryNodeNum = 0;
 	int queryEdgeNum = 0;
+    int queryNum = 0;
 	std::ifstream ifs(qfn.c_str());
 	while (true)
 	{
@@ -112,9 +113,11 @@ IO::input(vector<int>& query_list, vector<int>& edge_list)
 			break;
 		}
 		ifs >> queryEdgeNum;
+        ifs >> queryNum;
 		//cout << queryNodeNum << " to add!" << endl;
-		query_list.push_back(queryNodeNum);
+		node_list.push_back(queryNodeNum);
 		edge_list.push_back(queryEdgeNum);
+        query_list.push_back(queryNum);
 	}
 	ifs.close();
 	return true;
@@ -131,7 +134,7 @@ IO::output(int qid)
 bool
 IO::output()
 {
-	fprintf(ofp, "\n\n\n");
+	fprintf(ofp, "t # -1\n");
 	return true;
 }
 

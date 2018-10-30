@@ -17,7 +17,7 @@ class IO
 public:
 	IO();
 	IO(std::string query, std::string data, std::string file);
-	bool input(std::vector<int>& query_list, std::vector<int>& edge_list);
+	bool input(std::vector<int>& node_list, std::vector<int>& edge_list, std::vector<int>& query_list);
 	bool input(Graph*& data_graph);
 	Graph* input(FILE* fp);
 	bool output(int qid);
@@ -25,6 +25,11 @@ public:
 	bool output(int* m, int size);
 	void flush();
 	~IO();
+    FILE* getOFP() const
+    {
+        return this->ofp;
+    }
+
 private:
 	std::string line;
 	int data_id;
