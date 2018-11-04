@@ -83,6 +83,10 @@ public:
 	Util();
 	~Util();
 	static long get_cur_time();
+    static std::string int2string(long n);
+	static bool dir_exist(const std::string _dir);
+	static bool create_dir(const std:: string _dir);
+	static bool create_file(const std::string _file);
 };
 
 #endif //_UTIL_UTIL_H

@@ -23,7 +23,7 @@ main(int argc, const char * argv[])
 {
 	int i, j, k;
 
-	string output = "ans.g";
+	string output = "query";
 	if(argc > 4 || argc < 3)
 	{
 		cerr<<"invalid arguments!"<<endl;
@@ -61,7 +61,7 @@ main(int argc, const char * argv[])
 //			m.match(i);
             m.match(io);
 		}
-        io.output();
+//        io.output();
 		delete data_graph;
 	}
 

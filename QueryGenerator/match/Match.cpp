@@ -29,6 +29,7 @@ Match::~Match()
 {
 
 }
+
 int myFind(std::vector<Neighbor>& list,  int value) {
 	vector<Neighbor>::iterator it;
 	int elb = -1;
@@ -41,6 +42,27 @@ int myFind(std::vector<Neighbor>& list,  int value) {
 	return elb;
 }
 
+bool 
+Match::isDuplicate(std::vector<int*>& query_set, vector<int>& vlabel, std::vector<std::pair<int,int>*>& edges, std::vector<int>& elabel)
+{
+    int* record = new int[qsize+3*edgeNum];
+    for(int i = 0; i < qsize; ++i)
+    {
+        record[i] = vlabel[i];
+    }
+    for (int i = 0, pos = qsize; i < edges.size(); i ++, pos+=3) 
+    {
+        record[pos] = edges[i]->first;
+        record[pos+1] = edges[i]->second;
+        record[pos+2] = elabel[i];
+    }
+    //TODO: sort edges id and check
+    //if return true, delete [] record
+
+    query_set.push_back(record);
+    return false;
+}
+
 void 
 Match::match(IO& io)
 {
@@ -49,11 +71,15 @@ Match::match(IO& io)
 		return;
 	}
 	//cout << "node num is " << qsize << ", edge num is " << edgeNum << endl;
+    //NOTICE: duplicate queries generated can only occur in a specific (node num, edge num) pair
+    vector<int*> query_set;
+
     //BETTER: use goto here instead of nested break
     for(int qq = 0; qq < this->queryNum; ++qq)
     {
         //NOTICE: srand is needed to produce random number, otherwise every time the number sequence generated will be the same
         srand((unsigned)time(NULL)); 
+        //NOTICE: the searching is based on random rather than dfs, which is not strictly in random
         for (int t = 0; t < MAXSEARCHTIME; t ++) 
         {
             bool queryFound = true;
@@ -197,8 +223,16 @@ Match::match(IO& io)
 
             if (queryFound) 
             {
+                //check if duplicates
+                if(isDuplicate(query_set, vlabel, edge, elabel))
+                {
+                    continue;
+                }
+
                 //output the query graph
-                FILE* ofp = io.getOFP();
+                string file = io.getOutputDIR() + "/q" + Util::int2string(Match::query_count) + ".g";
+                FILE* ofp = fopen(file.c_str(), "w+");
+
                 fprintf(ofp, "t # %d\n", Match::query_count);
                 query_count++;
                 fprintf(ofp, "%d %d 10 10\n", qsize, edgeNum);
@@ -210,7 +244,9 @@ Match::match(IO& io)
                 {
                     fprintf(ofp, "e %d %d %d\n", edge[i]->first, edge[i]->second, elabel[i]);
                 }
-//                fprintf(ofp, "t # -1\n");
+
+                fprintf(ofp, "t # -1\n");
+                fclose(ofp);
 
                 for (int i = 0; i < edge.size(); i ++)
                     delete  edge[i];
@@ -220,6 +256,11 @@ Match::match(IO& io)
             if (!queryFound && t == MAXSEARCHTIME-1)
                 cout << "After " << MAXSEARCHTIME << " times search, no query matched! "<< endl;
         }
+    }
+
+    for(int i = 0; i < query_set.size(); ++i)
+    {
+        delete[] query_set[i];
     }
 }
 

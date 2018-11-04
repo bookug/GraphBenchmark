@@ -27,6 +27,8 @@ private:
 	Graph* data;
 	int edgeNum;
     int queryNum;    //generate how many queries in this file
+
+    bool isDuplicate(std::vector<int*>&, std::vector<int>&, std::vector<std::pair<int,int>*>&, std::vector<int>&);
 };
 
 #endif

@@ -17,7 +17,7 @@ IO::IO()
 	this->data_id = -1;
 }
 
-IO::IO(string query, string data, string file)
+IO::IO(string query, string data, string _dir)
 {
 	this->data_id = -1;
 	this->line = "============================================================";
@@ -28,12 +28,14 @@ IO::IO(string query, string data, string file)
 		cerr<<"input open error!"<<endl;
 		return;
 	}
-	ofp = fopen(file.c_str(), "w+");
-	if(ofp == NULL)
-	{
-		cerr<<"output open error!"<<endl;
-		return;
-	}
+//	ofp = fopen(file.c_str(), "w+");
+//	if(ofp == NULL)
+//	{
+//		cerr<<"output open error!"<<endl;
+//		return;
+//	}
+    this->output_directory = _dir;
+    Util::create_dir(_dir);
 }
 
 Graph* 

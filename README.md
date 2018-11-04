@@ -66,3 +66,21 @@ https://www.openacademic.ai/oag/
 
 http://www.cse.psu.edu/~kxm85/software/GTgraph/
 
+---
+
+### iGraph
+
+many small datasets
+
+igraph is a collection of network analysis tools with the emphasis on efficiency, portability and ease of use. igraph is open source and free. igraph can be programmed in R, Python and C/C++. 
+
+http://igraph.org/
+
+--
+
+### Sparse Matrix
+
+https://sparse.tamu.edu/
+
+---
+

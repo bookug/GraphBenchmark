@@ -29,6 +29,10 @@ public:
     {
         return this->ofp;
     }
+    std::string getOutputDIR() const
+    {
+        return this->output_directory;
+    }
 
 private:
 	std::string line;
@@ -39,6 +43,7 @@ private:
 	FILE* dfp;
 	//output file pointer
 	FILE* ofp;
+    std::string output_directory;
 };
 
 #endif
