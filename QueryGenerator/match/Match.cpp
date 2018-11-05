@@ -211,9 +211,10 @@ Match::match(IO& io)
                 int remainEdgeNum = edgeNum + 1 - qsize;
                 //cout << "the remainEdge number is " << remainEdgeNum  << endl;
                 int added = 0;
-                for (int j = 0; j < qsize; j ++) 
+                int size = vid.size();
+                for (int j = 0; j < size; j ++) 
                 {
-                    for (int i = 0; i < qsize; i ++) 
+                    for (int i = 0; i < size; i ++) 
                     {
                         if (j == i)
                             continue;
