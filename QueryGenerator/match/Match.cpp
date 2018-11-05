@@ -65,9 +65,15 @@ Match::isDuplicate(std::vector<int*>& query_set, vector<int>& vlabel, std::vecto
         record[pos+1] = edges[i]->second;
         record[pos+2] = elabel[i];
     }
+	//cout  << "sizeof(struct) is " << sizeof(sortEdges) << endl;
     //QUERY: no alignment in sortEdges? 12 bytes instead of 16 bytes?
 	sort((sortEdges*)(record+qsize),(sortEdges*)(record+qsize+3*edgeNum));
 	bool dupl = true;
+	if (query_set.size() == 0) {
+		query_set.push_back(record);
+		cout<<"a result found"<<endl;
+		return false;
+	}
 	for (int r = 0; r < query_set.size(); r ++) {
 		dupl = true;
 		for (int i = 0; i < qsize+3*edgeNum; i++) {
