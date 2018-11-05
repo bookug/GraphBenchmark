@@ -34,6 +34,7 @@ IO::IO(string query, string data, string _dir)
 //		cerr<<"output open error!"<<endl;
 //		return;
 //	}
+    this->ofp = NULL;
     this->output_directory = _dir;
     Util::create_dir(_dir);
 }
@@ -161,7 +162,11 @@ IO::~IO()
 {
 	fclose(this->dfp);
 	this->dfp = NULL;
-	fclose(this->ofp);
-	this->ofp = NULL;
+    if(this->ofp != NULL)
+    {
+        //NOTICE: fclose(NULL) will cause error, while fflush(NULL) is ok
+        fclose(this->ofp);
+        this->ofp = NULL;
+    }
 }
 

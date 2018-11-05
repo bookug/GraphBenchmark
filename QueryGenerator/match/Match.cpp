@@ -11,8 +11,8 @@
 
 using namespace std;
 
-#define MAXSEARCHTIME 100
-#define MAXSEARCHTIME2 100
+#define MAXSEARCHTIME 10000
+#define MAXSEARCHTIME2 10000
 
 int Match::query_count = 0;
 
@@ -65,8 +65,7 @@ Match::isDuplicate(std::vector<int*>& query_set, vector<int>& vlabel, std::vecto
         record[pos+1] = edges[i]->second;
         record[pos+2] = elabel[i];
     }
-    //TODO: sort edges id and check
-    //if return true, delete [] record
+    //QUERY: no alignment in sortEdges? 12 bytes instead of 16 bytes?
 	sort((sortEdges*)(record+qsize),(sortEdges*)(record+qsize+3*edgeNum));
 	bool dupl = true;
 	for (int r = 0; r < query_set.size(); r ++) {
@@ -84,6 +83,7 @@ Match::isDuplicate(std::vector<int*>& query_set, vector<int>& vlabel, std::vecto
 		delete [] record;
 		return true;
 	}
+    cout<<"a result found"<<endl;
     query_set.push_back(record);
     return false;
 }
@@ -91,6 +91,7 @@ Match::isDuplicate(std::vector<int*>& query_set, vector<int>& vlabel, std::vecto
 void 
 Match::match(IO& io)
 {
+//    cout<<"check sortEdges: "<<sizeof(sortEdges)<<endl;
 	if(qsize > dsize)
 	{
 		return;
@@ -248,6 +249,7 @@ Match::match(IO& io)
 
             if (queryFound) 
             {
+//                cout<<"to check duplicates"<<endl;
                 //check if duplicates
                 if(isDuplicate(query_set, vlabel, edge, elabel))
                 {
