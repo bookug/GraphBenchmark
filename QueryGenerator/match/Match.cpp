@@ -42,6 +42,15 @@ int myFind(std::vector<Neighbor>& list,  int value) {
 	return elb;
 }
 
+struct sortEdges{
+	int src;
+	int dst;
+	int label;
+	bool operator < (const sortEdges& e)const{
+		return src < e.src || (src == e.src && dst < e.dst);
+	}
+};
+
 bool 
 Match::isDuplicate(std::vector<int*>& query_set, vector<int>& vlabel, std::vector<std::pair<int,int>*>& edges, std::vector<int>& elabel)
 {
@@ -58,7 +67,23 @@ Match::isDuplicate(std::vector<int*>& query_set, vector<int>& vlabel, std::vecto
     }
     //TODO: sort edges id and check
     //if return true, delete [] record
-
+	sort((sortEdges*)(record+qsize),(sortEdges*)(record+qsize+3*edgeNum));
+	bool dupl = true;
+	for (int r = 0; r < query_set.size(); r ++) {
+		dupl = true;
+		for (int i = 0; i < qsize+3*edgeNum; i++) {
+			if(record[i] != query_set[r][i]) {
+				dupl = false;
+				break;
+			}
+		}
+		if(dupl == true)
+			break;
+	}
+	if (dupl) {
+		delete [] record;
+		return true;
+	}
     query_set.push_back(record);
     return false;
 }
@@ -250,9 +275,14 @@ Match::match(IO& io)
 
                 for (int i = 0; i < edge.size(); i ++)
                     delete  edge[i];
+				edge.clear();
                 break;
             }
-
+			if (!queryFound) {
+				for (int i = 0; i < edge.size(); i ++)
+					delete  edge[i];
+				edge.clear();
+			}
             if (!queryFound && t == MAXSEARCHTIME-1)
                 cout << "After " << MAXSEARCHTIME << " times search, no query matched! "<< endl;
         }
