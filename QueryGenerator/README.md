@@ -16,6 +16,15 @@ result_directory 参数是可选的，如果不加，默认是将结果输出到
 
 ---
 
+## Degree
+
+In real graphs, edge num is usually 2x-5x of node num.
+
+As for sparse graphs, we suggesting generating queries whose edge num is 2n-2.
+Otherwise, generating may fail.
+
+---
+
 ## NOTICE
 
 Duplicates are removed in the queries generated, but isomorphismic query graphs may exist due to the graph isomorphism in different parts of the data graph.
