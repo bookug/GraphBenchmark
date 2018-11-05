@@ -33,6 +33,8 @@ Match::~Match()
 int myFind(std::vector<Neighbor>& list,  int value) {
 	vector<Neighbor>::iterator it;
 	int elb = -1;
+	if (list.size() == 0)
+		return -1;
 	for (it = list.begin(); it != list.end(); it ++) {
 		if (it->vid == value) {
 			elb = it->elb;
@@ -129,20 +131,27 @@ Match::match(IO& io)
                     vlabel.push_back(data->vertices[qid].label);
                     continue;
                 }
+				bool nodeAdded = false;
                 for (int t2 = 0; t2 < MAXSEARCHTIME2; t2 ++) 
                 {
                     bool queryFound2 = true;
                     int randForStartId = rand()%i;
                     //random select a known node to expand
+				 	//printf("vid size is %d, randForStartId is %d\n",vid.size(),randForStartId);
                     int startId = vid[randForStartId];
                     int vertexInSize = data->vertices[startId].in.size();
                     int vertexOutSize = data->vertices[startId].out.size();
                     int startIdNeighbor = vertexInSize + vertexOutSize;
+					if (startIdNeighbor == 0)
+						continue;		
                     int randNum = rand()%startIdNeighbor;
                     int nextId;
                     if (randNum < vertexInSize) 
                     {
+						if (vertexInSize == 0)
+							continue;
                         int randPosInNeibList = rand()%vertexInSize;
+			
                         nextId = data->vertices[startId].in[randPosInNeibList].vid;
                         for (int c = 0; c < i; c ++) 
                         {
@@ -154,6 +163,7 @@ Match::match(IO& io)
                         }
                         if (!queryFound2)
                             continue;
+						nodeAdded = true;
                         vid.push_back(nextId);
                         vlabel.push_back(data->vertices[nextId].label);
                         pair<int,int> * tmpPairPtr = new pair<int,int>(i,randForStartId);
@@ -163,6 +173,8 @@ Match::match(IO& io)
                     else 
                     {
     //					randNum -= vertexInSize;
+						if (vertexOutSize == 0)
+							continue;
                         int randPosOutNeibList = rand()%vertexOutSize;
                         nextId = data->vertices[startId].out[randPosOutNeibList].vid;
                         for (int c = 0; c < i; c ++) 
@@ -175,6 +187,7 @@ Match::match(IO& io)
                         }
                         if (!queryFound2)
                             continue;
+						nodeAdded = true;
                         vid.push_back(nextId);
                         vlabel.push_back(data->vertices[nextId].label);
                         pair<int,int> * tmpPairPtr = new pair<int,int>(randForStartId,i);
@@ -188,6 +201,8 @@ Match::match(IO& io)
                 }
                 if (!queryFound) 
                     break;
+				if (!nodeAdded)
+					break;
             }
             //cout << "minimum graph find!" << endl;
 
@@ -206,6 +221,7 @@ Match::match(IO& io)
                         int iID = vid[i], jID = vid[j];
                         //cout << "iID is " << iID << ", jID is " << jID << endl;
                         bool findInList = false;
+//						printf("the in size is %d\n",data->vertices[iID].in.size());
                         if (myFind(data->vertices[iID].in, jID) != -1) 
                         {
                             findInList = true;
