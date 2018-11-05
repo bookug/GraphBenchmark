@@ -14,3 +14,11 @@
 
 result_directory 参数是可选的，如果不加，默认是将结果输出到query目录中
 
+---
+
+## NOTICE
+
+Duplicates are removed in the queries generated, but isomorphismic query graphs may exist due to the graph isomorphism in different parts of the data graph.
+
+However, in a big data graph the graph isomorphism case should be rare because we are digging based on a random model.
+

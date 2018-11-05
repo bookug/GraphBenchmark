@@ -71,7 +71,7 @@ Match::isDuplicate(std::vector<int*>& query_set, vector<int>& vlabel, std::vecto
 	bool dupl = true;
 	if (query_set.size() == 0) {
 		query_set.push_back(record);
-		cout<<"a result found"<<endl;
+//		cout<<"a result found"<<endl;
 		return false;
 	}
 	for (int r = 0; r < query_set.size(); r ++) {
@@ -89,7 +89,7 @@ Match::isDuplicate(std::vector<int*>& query_set, vector<int>& vlabel, std::vecto
 		delete [] record;
 		return true;
 	}
-    cout<<"a result found"<<endl;
+//    cout<<"a result found"<<endl;
     query_set.push_back(record);
     return false;
 }
