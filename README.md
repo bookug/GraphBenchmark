@@ -8,6 +8,8 @@ a benchmark for generating all kinds of graphs and queries
 
 http://snap.stanford.edu/data/
 
+http://vlado.fmf.uni-lj.si/pub/networks/data/
+
 ---
 
 ### R-MAT Generator
@@ -52,6 +54,7 @@ based on digging to ensure that only queries with answers are generated
 
 ### RDF2Graph
 
+transform RDF datasets(both real-life and synthetic) to the graph format we need
 
 
 ---
@@ -81,6 +84,16 @@ http://igraph.org/
 ### Sparse Matrix
 
 https://sparse.tamu.edu/
+
+---
+
+### HPRD
+
+http://www.hprd.org/download/
+
+yeast 
+
+human
 
 ---
 
