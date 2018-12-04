@@ -10,6 +10,9 @@ http://snap.stanford.edu/data/
 
 http://vlado.fmf.uni-lj.si/pub/networks/data/
 
+http://konect.uni-koblenz.de/networks/
+
+
 ---
 
 ### R-MAT Generator
