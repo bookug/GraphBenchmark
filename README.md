@@ -100,3 +100,16 @@ human
 
 ---
 
+### Collection found in hornet
+
+https://github.com/hornet-gt/hornet
+
+- Market (.mtx), [The University of Florida Sparse Matrix Collection](https://sparse.tamu.edu/)
+- Metis (.graph), [10th DIMACS Implementation Challenge](https://www.cc.gatech.edu/dimacs10/)
+- SNAP (.txt), [Stanford Network Analysis Project](http://snap.stanford.edu/)
+- Dimacs9th (.gr), [9th DIMACS Implementation Challenge](http://www.dis.uniroma1.it/challenge9/)
+- The Koblenz Network Collection (out.< name >), [The Koblenz Network Collection](http://konect.uni-koblenz.de/)
+- Network Data Repository (.edges), [Network Data Repository](http://networkrepository.com/index.php)
+
+---
+
