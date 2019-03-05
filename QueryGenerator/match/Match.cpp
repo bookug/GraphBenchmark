@@ -285,7 +285,14 @@ Match::match(IO& io)
 
                 fprintf(ofp, "t # %d\n", Match::query_count);
                 query_count++;
-                fprintf(ofp, "%d %d 10 10\n", qsize, edgeNum);
+				int maxVLabel = 0, maxELabel = 0;
+				for (int i = 0; i < qsize; i ++)
+					if (vlabel[i] > maxVLabel)
+						maxVLabel = vlabel[i];
+				for (int i = 0; i < edge.size(); i ++)
+					if (elabel[i] > maxELabel)
+						maxELabel = elabel[i];
+                fprintf(ofp, "%d %d %d %d\n", qsize, edgeNum, maxVLabel, maxELabel);
                 for (int i = 0; i < qsize; i ++)
                 {
                     fprintf(ofp, "v %d %d\n", i, vlabel[i]);
