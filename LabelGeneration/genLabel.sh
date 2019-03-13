@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #WARN: each a time, not support parallelism in the same directory
+#WARN: the data file placed in ./data/ will be overwrite
 
 #settings
 vLabelNum=10
