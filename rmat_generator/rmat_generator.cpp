@@ -18,6 +18,7 @@ int main()
   boost::graph_traits<Graph>::vertex_iterator vi, vi_end;
   for(boost::tie(vi, vi_end) = vertices(g); vi != vi_end; ++vi)
       std::cout<<*vi<<std::endl;
+  std::cout<<"print all edges:"<<std::endl;
   boost::graph_traits<Graph>::edge_iterator ei, ei_end;
   for (boost::tie(ei, ei_end) = edges(g); ei != ei_end; ++ei)
   {
