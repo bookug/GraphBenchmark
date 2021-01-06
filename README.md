@@ -23,7 +23,7 @@ https://www.boost.org/doc/libs/1_68_0/libs/graph_parallel/doc/html/rmat_generato
 
 ### RDF Generator
 
-WatDiv
+WatDiv: https://dsg.uwaterloo.ca/watdiv/#dataset
 
 LUBM
 
@@ -31,7 +31,6 @@ BSBM
 
 https://github.com/graphMark/gmark
 
-http://konect.uni-koblenz.de/networks/amazon-ratings
 
 stream
 
@@ -112,4 +111,19 @@ https://github.com/hornet-gt/hornet
 - Network Data Repository (.edges), [Network Data Repository](http://networkrepository.com/index.php)
 
 ---
+
+### Sparse Matrix
+
+https://sparse.tamu.edu/
+
+---
+
+### MIVIA 
+
+used in vf3 paper
+
+https://mivia.unisa.it/datasets/graph-database/arg-database/
+
+---
+
 

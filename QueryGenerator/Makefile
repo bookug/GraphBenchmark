@@ -1,10 +1,10 @@
 #compile parameters
 
 CC = g++
-CFLAGS = -c -Wall -O6 #-fprofile-arcs -ftest-coverage -coverage #-pg
-EXEFLAG = -O6 #-fprofile-arcs -ftest-coverage -coverage #-pg #-O2
-#CFLAGS = -c -Wall -g #-fprofile-arcs -ftest-coverage -coverage #-pg
-#EXEFLAG = -g #-fprofile-arcs -ftest-coverage -coverage #-pg #-O2
+#CFLAGS = -c -Wall -O6 #-fprofile-arcs -ftest-coverage -coverage #-pg
+#EXEFLAG = -O6 #-fprofile-arcs -ftest-coverage -coverage #-pg #-O2
+CFLAGS = -c -Wall -g #-fprofile-arcs -ftest-coverage -coverage #-pg
+EXEFLAG = -g #-fprofile-arcs -ftest-coverage -coverage #-pg #-O2
 	 
 #add -lreadline -ltermcap if using readline or objs contain readline
 library = #-lgcov -coverage

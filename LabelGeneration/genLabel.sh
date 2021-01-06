@@ -4,8 +4,8 @@
 #WARN: the data file placed in ./data/ will be overwrite
 
 #settings
-vLabelNum=10
-eLabelNum=100
+vLabelNum=100
+eLabelNum=10
 for file in `ls ./data/`
 do
 	vertexNum=`grep "v" ./data/$file | wc -l`
