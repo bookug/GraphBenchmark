@@ -1,0 +1,6 @@
+.vscode/
+*.exe
+objs/*
+*.o
+*.bat
+/query/

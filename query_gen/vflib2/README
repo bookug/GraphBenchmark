@@ -1,0 +1,5 @@
+VFLib deals with simple directed graphs, i.e. the graphs can not contain self-loops, and
+between two nodes there is at most one edge.
+
+node id is represented by a 16-bit unsigned integer, so valid node ids vary from 0 to 65534.
+(NULL_NODE is 2^16-1, i.e. 65535)

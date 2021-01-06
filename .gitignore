@@ -34,3 +34,5 @@
 *.txt
 *.g
 
+
+.vscode/
