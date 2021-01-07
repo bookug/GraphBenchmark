@@ -1,3 +1,4 @@
+# WARN: this file does not generate right distribution.
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -7,15 +8,22 @@ import numpy as np
 #NOTICE: we can also generate a table then draw with Matlab
 
 degree_map={}
-with open("degrees.txt",'r') as edge_file:
+with open("edges",'r') as edge_file:
     while True:
         tmp_line=edge_file.readline()
         if not tmp_line:
             break
         tmp_edge=tmp_line.strip().split()
         vertex0=tmp_edge[0]
-        deg=(int)(tmp_edge[1])
-        degree_map[vertex0]=deg
+        vertex1=tmp_edge[1]
+        if vertex0 in degree_map:
+            degree_map[vertex0]+=1
+        else:
+            degree_map[vertex0]=1
+        if vertex1 in degree_map:
+            degree_map[vertex1]+=1
+        else:
+            degree_map[vertex1]=1
 
 # print(len(degree_map))
 # for tmp_pair in degree_map.items():
@@ -34,14 +42,11 @@ for vertex_id in degree_map:
     else:
         degree2cnt[tmp_degree]=1
 
-max_deg=max(degree2cnt.keys())
-deg_list=range(1, max_deg+1)
+deg_list=list(degree2cnt.keys())
+deg_list.sort(reverse=True)
 cnt_list=[]
 for tmp_deg in deg_list:
-    if tmp_deg in degree2cnt:
-        cnt_list.append(degree2cnt[tmp_deg])
-    else:
-        cnt_list.append(0)
+    cnt_list.append(degree2cnt[tmp_deg])
 
 fig, ax = plt.subplots()
 ax.plot(deg_list,cnt_list)
