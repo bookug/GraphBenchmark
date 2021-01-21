@@ -42,11 +42,21 @@ for vertex_id in degree_map:
     else:
         degree2cnt[tmp_degree]=1
 
-deg_list=list(degree2cnt.keys())
-deg_list.sort(reverse=True)
+# deg_list=list(degree2cnt.keys())
+# deg_list.sort(reverse=True)
+# cnt_list=[]
+# for tmp_deg in deg_list:
+    # cnt_list.append(degree2cnt[tmp_deg])
+
+max_deg=max(degree2cnt.keys())
+print("max_deg: %d" % max_deg)
+deg_list=range(1, max_deg+1)
 cnt_list=[]
 for tmp_deg in deg_list:
-    cnt_list.append(degree2cnt[tmp_deg])
+    if tmp_deg in degree2cnt:
+        cnt_list.append(degree2cnt[tmp_deg])
+    else:
+        cnt_list.append(0)
 
 fig, ax = plt.subplots()
 ax.plot(deg_list,cnt_list)
